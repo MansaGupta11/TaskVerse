@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import {
-  Zap, AlertTriangle, ArrowRight,
+  Zap, AlertTriangle, ArrowRight, ArrowLeft,
   ShieldCheck, CheckCircle, Eye, EyeOff, Users,
   Loader2, X, Check,
 } from 'lucide-react'
@@ -245,10 +245,20 @@ export default function Login() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="w-full max-w-md"
         >
-          <Link to="/" className="inline-flex items-center gap-2.5 mb-8 group">
-            <LogoMark size={36} className="shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-shadow" />
-            <span className="text-xl font-bold text-gray-900 dark:text-white">TaskVerse</span>
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-1.5 mb-6 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+          >
+            <ArrowLeft size={15} className="transition-transform group-hover:-translate-x-0.5" />
+            Back to home
           </Link>
+
+          <div className="flex justify-center mb-8">
+            <Link to="/" className="inline-flex items-center gap-2 group">
+              <LogoMark size={32} className="shadow-md shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-shadow" />
+              <span className="text-lg font-bold text-gray-900 dark:text-white">TaskVerse</span>
+            </Link>
+          </div>
 
           <div className="flex bg-gray-100 dark:bg-gray-800 rounded-2xl p-1 mb-7">
             {[
