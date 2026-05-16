@@ -36,7 +36,7 @@
 
 ### Admin Dashboard
 
-![TaskVerse Admin Dashboard](docs/screenshots/dashboard.png)
+![TaskVerse Admin Dashboard](frontend/public/images/dashboard.png)
 
 > _Admin dashboard — system-wide stats, SVG donut status chart, animated priority bars, per-project member breakdown table._
 
@@ -44,7 +44,7 @@
 
 ### Member Dashboard
 
-![TaskVerse Member Dashboard](docs/screenshots/member-dashboard.png)
+![TaskVerse Member Dashboard](frontend/public/images/member-dashboard.png)
 
 > _Member dashboard — assignee-scoped stat cards, personal project list, and a "My Tasks" table with inline status dropdowns, colored priority badges, and overdue-row highlighting._
 
@@ -180,6 +180,7 @@ team-task-manager/
 │
 ├── 📁 frontend/
 │   ├── public/
+│   │   ├── images/                 # README screenshots (dashboard previews)
 │   │   ├── _redirects              # SPA routing for Railway: /* /index.html 200
 │   │   └── favicon.svg             # TaskVerse SVG brand mark
 │   └── src/
@@ -259,7 +260,6 @@ team-task-manager/
 │   ├── .env.example
 │   └── package.json
 │
-├── 📁 docs/screenshots/            # App screenshots
 ├── .gitignore
 └── README.md
 ```
