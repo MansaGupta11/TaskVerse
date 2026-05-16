@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+html { transition: color 0.2s, background-color 0.2s; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-gray-300 dark:bg-gray-700 rounded-full; }
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/70 dark:bg-gray-900/70 border border-white/20 dark:border-white/10;
+  }
+  .glass-dark {
+    @apply backdrop-blur-md bg-gray-950/80 border border-white/10;
+  }
+  .gradient-brand {
+    background: linear-gradient(135deg, #6c47ff 0%, #9333ea 50%, #d946ef 100%);
+  }
+  .gradient-brand-subtle {
+    background: linear-gradient(135deg, #6c47ff22 0%, #9333ea22 100%);
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #8470ff 0%, #c084fc 45%, #e879f9 100%);
+  }
+  .text-gradient-hero {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #ffffff 0%, #d8b4fe 60%, #e879f9 100%);
+  }
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(108,71,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(108,71,255,0.07) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .dark .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(108,71,255,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(108,71,255,0.12) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .glow-brand {
+    box-shadow: 0 0 40px 8px rgba(108,71,255,0.35);
+  }
+  .glow-brand-sm {
+    box-shadow: 0 0 20px 4px rgba(108,71,255,0.25);
+  }
+  .card-glass {
+    @apply rounded-2xl border border-white/10 dark:border-white/5;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+  }
+  .shimmer-text {
+    background: linear-gradient(90deg, #8470ff 0%, #e879f9 40%, #8470ff 80%);
+    background-size: 200% auto;
+    @apply bg-clip-text text-transparent animate-shimmer;
+  }
+  .border-gradient {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  .input-premium {
+    @apply w-full rounded-xl px-4 py-2.5 text-sm outline-none transition;
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm;
+    @apply border border-gray-200 dark:border-gray-700;
+    @apply text-gray-900 dark:text-gray-100;
+    @apply placeholder-gray-400 dark:placeholder-gray-500;
+    @apply focus:ring-2 focus:ring-brand-500 focus:border-transparent;
+  }
+}
+
+@layer utilities {
+  .aurora-bg {
+    background: linear-gradient(
+      135deg,
+      #0f0c29,
+      #1a1040,
+      #24243e,
+      #1a1040,
+      #0f0c29,
+      #16213e,
+      #0f3460,
+      #533483
+    );
+    background-size: 400% 400%;
+    animation: aurora 8s ease infinite;
+  }
+
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .shimmer-text {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.6) 0%,
+      rgba(255,255,255,1) 40%,
+      rgba(255,255,255,0.6) 80%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .glass {
+    @apply bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/60;
+  }
+
+  .spotlight-hover {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .spotlight-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      600px circle at var(--x, 50%) var(--y, 50%),
+      rgba(99, 102, 241, 0.1),
+      transparent 40%
+    );
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+
+  .spotlight-hover:hover::before {
+    opacity: 1;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+}
