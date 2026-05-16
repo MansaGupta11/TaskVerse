@@ -39,8 +39,35 @@ const deleteUser = async (req, res, next) => {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
 
-    await Task.updateMany({ assigneeId: id }, { $set: { assigneeId: null } });
-    await Task.updateMany({ creatorId: id }, { $set: { creatorId: null } });
+    // Detach the deleted user from every task. assigneeIds is the source of truth;
+    // assigneeId is a legacy mirror of assigneeIds[0] and must stay in sync.
+    await Task.updateMany(
+      { $or: [{ assigneeIds: user._id }, { assigneeId: user._id }] },
+      [
+        {
+          $set: {
+            assigneeIds: {
+              $filter: {
+                input: { $ifNull: ['$assigneeIds', []] },
+                cond: { $ne: ['$$this', user._id] },
+              },
+            },
+          },
+        },
+        {
+          $set: {
+            assigneeId: {
+              $cond: [
+                { $eq: ['$assigneeId', user._id] },
+                { $ifNull: [{ $arrayElemAt: ['$assigneeIds', 0] }, null] },
+                '$assigneeId',
+              ],
+            },
+          },
+        },
+      ]
+    );
+    await Task.updateMany({ creatorId: user._id }, { $set: { creatorId: null } });
     await Project.updateMany(
       { 'members.userId': id },
       { $pull: { members: { userId: id } } }

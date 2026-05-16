@@ -305,6 +305,87 @@ export default function Login() {
           )}
 
 
+          <AnimatePresence>
+            {activeTab === 'admin' && (
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              className="mb-4 rounded-2xl border border-indigo-200 dark:border-indigo-800/60 bg-indigo-50/70 dark:bg-indigo-900/20 p-4"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center flex-shrink-0">
+                  <Zap size={11} className="text-white" />
+                </div>
+                <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300 tracking-wide uppercase">Demo Credentials</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="bg-white dark:bg-gray-900/60 rounded-xl px-3 py-2 border border-indigo-100 dark:border-indigo-800/40">
+                  <p className="text-[10px] font-semibold text-indigo-400 dark:text-indigo-500 uppercase tracking-wider mb-0.5">Email</p>
+                  <p className="text-xs font-mono font-semibold text-gray-800 dark:text-gray-200 break-all">admin@example.com</p>
+                </div>
+                <div className="bg-white dark:bg-gray-900/60 rounded-xl px-3 py-2 border border-indigo-100 dark:border-indigo-800/40">
+                  <p className="text-[10px] font-semibold text-indigo-400 dark:text-indigo-500 uppercase tracking-wider mb-0.5">Password</p>
+                  <p className="text-xs font-mono font-semibold text-gray-800 dark:text-gray-200">Admin@12345</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  loginForm.setValue('email', 'admin@example.com')
+                  loginForm.setValue('password', 'Admin@12345')
+                  loginForm.clearErrors()
+                }}
+                className="w-full flex items-center justify-center gap-1.5 py-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-white dark:bg-gray-900/60 border border-indigo-200 dark:border-indigo-700/60 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/40 transition-all"
+              >
+                <ArrowRight size={11} />
+                One-click fill
+              </button>
+            </motion.div>
+          )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {activeTab === 'member' && !isSignup && (
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              className="mb-4 rounded-2xl border border-emerald-200 dark:border-emerald-800/60 bg-emerald-50/70 dark:bg-emerald-900/20 p-4"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                  <Zap size={11} className="text-white" />
+                </div>
+                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 tracking-wide uppercase">Demo Credentials</span>
+                <span className="ml-auto text-[10px] text-emerald-500 dark:text-emerald-400">6 demo members · same password</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="bg-white dark:bg-gray-900/60 rounded-xl px-3 py-2 border border-emerald-100 dark:border-emerald-800/40">
+                  <p className="text-[10px] font-semibold text-emerald-400 dark:text-emerald-500 uppercase tracking-wider mb-0.5">Email</p>
+                  <p className="text-xs font-mono font-semibold text-gray-800 dark:text-gray-200 break-all">sarah.chen@taskverse.app</p>
+                </div>
+                <div className="bg-white dark:bg-gray-900/60 rounded-xl px-3 py-2 border border-emerald-100 dark:border-emerald-800/40">
+                  <p className="text-[10px] font-semibold text-emerald-400 dark:text-emerald-500 uppercase tracking-wider mb-0.5">Password</p>
+                  <p className="text-xs font-mono font-semibold text-gray-800 dark:text-gray-200">TaskVerse@2026</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  loginForm.setValue('email', 'sarah.chen@taskverse.app')
+                  loginForm.setValue('password', 'TaskVerse@2026')
+                  loginForm.clearErrors()
+                }}
+                className="w-full flex items-center justify-center gap-1.5 py-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-white dark:bg-gray-900/60 border border-emerald-200 dark:border-emerald-700/60 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/40 transition-all"
+              >
+                <ArrowRight size={11} />
+                One-click fill
+              </button>
+            </motion.div>
+            )}
+          </AnimatePresence>
+
           <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-xl dark:shadow-black/40 p-8">
             <AnimatePresence mode="wait">
               {!isSignup ? (
